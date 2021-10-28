@@ -1,19 +1,13 @@
 import {Component} from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 
 
 class SelectedBeastModal extends Component {
 
-    constructor() {
-        super()
-        this.state = {
-          show : false
-        }
-      }
-
-      hideModal = () => {
-        this.setState({ show: false})
+      handleClose = () => {
+        this.props.hideModal();
     }
 
     showModal = () => {
@@ -21,14 +15,25 @@ class SelectedBeastModal extends Component {
     }
 
 render() {
+  console.log(this.props.featuredBeast);
     return (
         <div>
             
-            <Modal show={this.props.show} onHide={this.handleClose}>
-          <Modal.Header>
-            <Modal.Title>title</Modal.Title>
+            <Modal show={this.props.show} onHide={this.props.hideModal}>
+            <Modal.Header closeButton>
+            <Modal.Title>{this.props.featuredBeast.title}</Modal.Title>
           </Modal.Header>
-          <Modal.Body>body stuff</Modal.Body>
+          <Modal.Body>
+            <Card>
+              <Card.Img variant="top" src={this.props.featuredBeast.image_url} alt={this.props.featuredBeast.description} />
+              <Card.Body>
+                <Card.Title>{this.props.featuredBeast.title}</Card.Title>
+                <Card.Text>
+                 {this.props.featuredBeast.description}
+                </Card.Text>
+                <Card.Text>Horns: {this.props.featuredBeast.horns}</Card.Text>
+              </Card.Body>
+            </Card></Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={this.handleClose}>
               Close

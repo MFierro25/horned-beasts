@@ -1,8 +1,6 @@
 import {Component} from 'react';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-import SelectedBeastModal from './SelectedBeastModal';
-
 
 
 class Hornedbeast extends Component {
@@ -19,7 +17,9 @@ class Hornedbeast extends Component {
         this.setState({favorited: this.state.favorited + 1})
     }
 
-  
+  handleClickModal = () => {
+      this.props.changeBeast(this.props.beast);
+  }
 
     render () {
         return (
@@ -30,7 +30,7 @@ class Hornedbeast extends Component {
                <Card.Img variant='top'
             src = {this.props.beast.image_url}
             title = {this.props.beast.title}
-            description = {this.props.beast.description} />
+            description = {this.props.beast.description} onClick={this.handleClickModal}/>
 
                    <Card.Text>
                        {this.props.beast.description}
@@ -39,7 +39,7 @@ class Hornedbeast extends Component {
                </Card.Body>
            </Card>
 
-           <SelectedBeastModal />
+           
            </div>
         )
     }
