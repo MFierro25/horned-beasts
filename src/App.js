@@ -5,6 +5,8 @@ import Footer from './Footer.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SelectedBeastModal from './SelectedBeastModal.js';
 import beast from './data.json';
+import BeastForm from './BeastForm.js';
+
 
 
 
@@ -19,7 +21,8 @@ export default class App extends Component {
         image_url: '',
         horns: 0
       },
-      show : false
+      show : false,
+      allBeast: beast
     }
   }
 
@@ -38,11 +41,15 @@ export default class App extends Component {
     this.setState({show: true})
   }
 
+  displayBeast = (arr) => {
+    this.setState({allBeast: arr});
+  }
   render() {
     return (
       <div>
         { <>
           <Header />
+          <BeastForm beast={beast} />
           <Main changeBeast={this.changeBeast} beast={beast}/>
           <Footer />
           <SelectedBeastModal featuredBeast={this.state.featuredBeast} hideModal={this.hideModal} show={this.state.show} />
