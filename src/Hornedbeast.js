@@ -31,10 +31,12 @@ class Hornedbeast extends Component {
             src = {this.props.beast.image_url}
             title = {this.props.beast.title}
             description = {this.props.beast.description} onClick={this.handleClickModal}/>
-
                    <Card.Text>
                        {this.props.beast.description}
-                   </Card.Text>
+                    </Card.Text>
+                    <Card.Text>
+                       <p>Horns: {this.props.beast.horns}</p>
+                    </Card.Text>
                    <Button variant='outline-danger' onClick={this.handleFavorite}> &hearts; {this.state.favorited}</Button>
                </Card.Body>
            </Card>

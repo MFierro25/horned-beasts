@@ -27,7 +27,6 @@ render() {
             <Card>
               <Card.Img variant="top" src={this.props.featuredBeast.image_url} alt={this.props.featuredBeast.description} />
               <Card.Body>
-                <Card.Title>{this.props.featuredBeast.title}</Card.Title>
                 <Card.Text>
                  {this.props.featuredBeast.description}
                 </Card.Text>
